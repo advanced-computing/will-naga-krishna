@@ -1,0 +1,4 @@
+pandas
+jupyter==1.*
+numpy
+plotly
