@@ -1,4 +1,3 @@
-! pip install sodapy
 import streamlit as st
 import pandas as pd
 from sodapy import Socrata
