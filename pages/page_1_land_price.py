@@ -6,10 +6,6 @@ from sodapy import Socrata
 import pydeck as pdk
 
 # title
-
-st.markdown("# Page 1 ❄️")
-st.sidebar.markdown("# Page 1 ❄️")
-
 st.title("NYC Land Price Mapping - Will & Naga")
 st.write("This is our first attempt at building a map of the land price data in Streamlit")
 
