@@ -3,6 +3,7 @@ jupyter==1.*
 numpy
 plotly
 sodapy
+plotnine
 # change
 # experiment 
 # change2
