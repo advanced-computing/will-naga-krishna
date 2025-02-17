@@ -74,8 +74,17 @@ no_blanks_df['proposed_dwelling_units'] = no_blanks_df['proposed_dwelling_units'
 
 no_blanks_df['pre__filing_date'] = pd.to_datetime(no_blanks_df['pre__filing_date'],format='%m/%d/%Y')
 
-last_five_years = no_blanks_df[no_blanks_df['pre__filing_date']>'2023-01-01']
+last_two_years = no_blanks_df[no_blanks_df['pre__filing_date']>'2023-01-01']
+#adding colors to the job types - taken from Naga's code, assisted by ChatGPT
+job_type_colors = {
+    "A1": "#FF0000", # red #Alterations needing new CO
+    "A2": "#00FF00", # green #Alterations interior reno
+    "NB": "#0000FF", # blue #new construction
+    "A3": "#FFA500", #organge #minor alterations
+}
 
+last_two_years['color'] = last_two_years['job_type'].map(job_type_colors).fillna("#808080")
+#end of taken code
 st.title("NYC Construction Applications Mapping - Will & Naga")
 st.write("This is our first attempt at building a map of the construction applications data in Streamlit")
-st.map(last_five_years, latitude='gis_latitude', longitude='gis_longitude',size='proposed_dwelling_units')
+st.map(last_two_years, latitude='gis_latitude', longitude='gis_longitude',size='proposed_dwelling_units',color='color')
