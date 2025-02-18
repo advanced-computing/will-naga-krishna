@@ -85,7 +85,7 @@ job_type_colors = {
 
 last_two_years['color'] = last_two_years['job_type'].map(job_type_colors).fillna("#808080")
 #end of taken code
-st.title("NYC Construction Applications Mapping - Will & Naga")
+st.title("NYC Construction Applications Mapping")
 st.write("This mapping shows the approved applications for construction throughout New York City from Jan. 2023 to today.")
 st.map(last_two_years, latitude='gis_latitude', longitude='gis_longitude',size='proposed_dwelling_units',color='color')
 
