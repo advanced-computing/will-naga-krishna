@@ -86,5 +86,14 @@ job_type_colors = {
 last_two_years['color'] = last_two_years['job_type'].map(job_type_colors).fillna("#808080")
 #end of taken code
 st.title("NYC Construction Applications Mapping - Will & Naga")
-st.write("This is our first attempt at building a map of the construction applications data in Streamlit")
+st.write("This mapping shows the approved applications for construction throughout New York City from Jan. 2023 to today.")
 st.map(last_two_years, latitude='gis_latitude', longitude='gis_longitude',size='proposed_dwelling_units',color='color')
+
+'''
+The size of the dots is based on the number of proposed units for each project.
+The colors are based on the construction type.
+Red dots are projects for Alteration Type 1 (A1) which are considered major changes that require a new Certificate of Occupany.
+Green dots are for Alteration Type 2 (A2) which are considered minor interior renovations that do not require a new Certificate of Occupancy.
+Orange dots are for Alteration Type 3 (A3) which are considered minor renovations typically to the exterior like fences.
+Blue dots are for New Building (NB) construction
+'''
