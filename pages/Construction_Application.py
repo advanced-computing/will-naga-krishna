@@ -32,11 +32,13 @@ all_results = []
 offset=0
 while True:
     client = Socrata("data.cityofnewyork.us", None)
-    results = client.get("ic3t-wcy2", where="job_status='R'", limit=50000,offset=offset)
-    offset = offset + 50000
+    results = client.get("ic3t-wcy2", where="job_status='R'", limit=20000,offset=offset)
+    offset = offset + 20000
     print(len(results),offset)
     all_results.extend(results)
-    if len(results)<50000:
+    #adding in throttle below for testing
+    if offset >20000:
+    #if len(results)<50000:
         break
 all_results_df = pd.DataFrame.from_dict(all_results)
 
