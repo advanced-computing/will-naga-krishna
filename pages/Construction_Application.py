@@ -65,7 +65,7 @@ def remove_blanks(df, column):
     return df[df[column].notna().all(axis=1)]
 
 #apply function
-no_blanks_df = remove_blanks(trimmed_df,['gis_latitiude','proposed_dwelling_units'])
+no_blanks_df = remove_blanks(trimmed_df,['gis_latitude','proposed_dwelling_units'])
 #no_blanks_df = trimmed_df[(trimmed_df['gis_latitude'].notna()) & (trimmed_df['proposed_dwelling_units'].notna())]
 
 
