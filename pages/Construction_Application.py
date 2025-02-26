@@ -78,8 +78,8 @@ no_blanks_df = no_blanks_df.dropna(subset=['proposed_dwelling_units'])
 #End segment from ChatGPT
 
 #create a function to convert to float
-def convert_to_float(df, column):
-    df[column] = df[column].astype(float)
+def convert_to_float(df, columns):
+    df[columns] = df[columns].astype(float)
     return df
 #apply function
 no_blanks_df = convert_to_float(no_blanks_df, ['gis_latitude','gis_longitude'])
