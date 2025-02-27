@@ -60,7 +60,14 @@ trimmed_df = all_results_df[['job__',
                              'gis_longitude']]
 
 
-no_blanks_df = trimmed_df[(trimmed_df['gis_latitude'].notna()) & (trimmed_df['proposed_dwelling_units'].notna())]
+#create a function to remove blank rows
+def remove_blanks(df, column):
+    return df[df[column].notna().all(axis=1)]
+
+#apply function
+no_blanks_df = remove_blanks(trimmed_df,['gis_latitude','proposed_dwelling_units'])
+#no_blanks_df = trimmed_df[(trimmed_df['gis_latitude'].notna()) & (trimmed_df['proposed_dwelling_units'].notna())]
+
 
 #From ChatGPT: https://chatgpt.com/share/67b36169-fbe0-8009-9e36-14fec4fa4648
 # Convert 'proposed_dwelling_units' to numeric, forcing errors to NaN
@@ -70,8 +77,15 @@ no_blanks_df['proposed_dwelling_units'] = pd.to_numeric(no_blanks_df['proposed_d
 no_blanks_df = no_blanks_df.dropna(subset=['proposed_dwelling_units'])
 #End segment from ChatGPT
 
-no_blanks_df['gis_latitude']= no_blanks_df['gis_latitude'].astype(float)
-no_blanks_df['gis_longitude'] = no_blanks_df['gis_longitude'].astype(float)
+#create a function to convert to float
+def convert_to_float(df, columns):
+    df[columns] = df[columns].astype(float)
+    return df
+#apply function
+no_blanks_df = convert_to_float(no_blanks_df, ['gis_latitude','gis_longitude'])
+
+#no_blanks_df['gis_latitude']= no_blanks_df['gis_latitude'].astype(float)
+#no_blanks_df['gis_longitude'] = no_blanks_df['gis_longitude'].astype(float)
 no_blanks_df['proposed_dwelling_units'] = no_blanks_df['proposed_dwelling_units'].astype(int)
 
 no_blanks_df['pre__filing_date'] = pd.to_datetime(no_blanks_df['pre__filing_date'],format='%m/%d/%Y')
