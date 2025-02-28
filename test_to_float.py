@@ -1,4 +1,4 @@
-import pytest
+# import pytest
 import pandas as pd
 from pages.Land_Price import to_float
 

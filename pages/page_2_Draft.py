@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from sodapy import Socrata
-import pydeck as pdk
+# import pydeck as pdk
 
 st.markdown("# draft ❄️")
 st.sidebar.markdown("# draft ❄️")
