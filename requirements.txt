@@ -9,3 +9,4 @@ plotnine
 # change2
 pytest
 pytest-cov
+streamlit
