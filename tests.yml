@@ -1,0 +1,26 @@
+name: Run tests
+
+on: push
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+      # https://github.com/actions/setup-python
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run tests
+        # https://pytest-cov.readthedocs.io/en/latest/readme.html
+        run: pytest --cov
+      # https://github.com/astral-sh/ruff-action
+      - name: Run ruff
+        uses: astral-sh/ruff-action@v3
+        with:
+          version: latest
