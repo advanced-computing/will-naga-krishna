@@ -8,3 +8,4 @@ plotnine
 # experiment 
 # change2
 pytest
+pytest-cov
