@@ -61,8 +61,8 @@ trimmed_df = all_results_df[['job__',
 
 
 #create a function to remove blank rows
-def remove_blanks(df, column):
-    return df[df[column].notna().all(axis=1)]
+def remove_blanks(df, columns):
+    return df[df[columns].notna().all(axis=1)]
 
 #apply function
 no_blanks_df = remove_blanks(trimmed_df,['gis_latitude','proposed_dwelling_units'])
