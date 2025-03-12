@@ -1,6 +1,6 @@
 # import pytest
 import pandas as pd
-from pages.Land_Price import to_float
+from pkg.property_price import to_float
 
 def test_to_float():
     data = pd.Series(['1', '2', '3', '4', '5'])
