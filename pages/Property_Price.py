@@ -1,8 +1,5 @@
 # import libraries
 import streamlit as st
-import pydeck as pdk
-import pandas as pd
-from sodapy import Socrata
 from pkg.mapping import pydeck_chart
 from pkg.property_price import to_float, to_borough_name
 from pkg.load_data import connect_to_nyc_data
