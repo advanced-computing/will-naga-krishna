@@ -1,46 +1,13 @@
-import pandas as pd
+#import pandas as pd
 import streamlit as st
 import sodapy as sodapy
 
 # from sodapy import Socrata
-from construction_functions import connect_to_nyc_data, remove_blanks, convert_column_to_int, convert_to_float
+from construction_functions import connect_to_nyc_data, filter_to_new_buildings
 
-all_results_df = connect_to_nyc_data("w9ak-ipjd", "filing_date>'2024-12-31T00:00:00.000'")
+all_results_df = connect_to_nyc_data("w9ak-ipjd", "filing_date>'2023-12-31T00:00:00.000'")
 
-
-
-trimmed_df = all_results_df[['job_filing_number',
-                             'filing_status',
-                             'borough',
-                             'house_no',
-                             'street_name',
-                             'initial_cost',
-                             'building_type',
-                             'existing_stories',
-                             'existing_height',
-                             'existing_dwelling_units',
-                             'proposed_no_of_stories',
-                             'proposed_height',
-                             'proposed_dwelling_units',
-                             'filing_date',
-                             'current_status_date',
-                             'first_permit_date',
-                             'latitude',
-                             'longitude',
-                             'job_type']]
-
-
-
-no_blanks_df = remove_blanks(trimmed_df,['existing_dwelling_units','proposed_dwelling_units','latitude','longitude'])
-
-
-no_blanks_df = convert_column_to_int(no_blanks_df,['existing_dwelling_units','proposed_dwelling_units'])
-
-no_blanks_df = convert_to_float(no_blanks_df, ['latitude','longitude'])
-
-
-no_blanks_df['filing_date'] = pd.to_datetime(no_blanks_df['filing_date'],format='mixed')
-approved_2025 = no_blanks_df[no_blanks_df['filing_status'].isin(['Approved'])]
+new_buildings_permitted = filter_to_new_buildings(all_results_df)
 
 
 job_type_colors = {
@@ -52,21 +19,58 @@ job_type_colors = {
     "Full Demolition": "#FFA500", #orange - Full Demolition
 }
 
+building_type_colors = {
+    'Other': '#FF0000', #red
+    '3 Family': '#00FF00', #green
+    '2 Family': '#FFA500', #orange
+    '1 Family': '#0000FF', #blue
+}
 
-approved_2025['color'] = approved_2025['job_type'].map(job_type_colors).fillna("#808080")
-
-# New column for change in units -- put that in the size? (negative values?)
+new_buildings_permitted['color'] = new_buildings_permitted['building_type'].map(building_type_colors).fillna("#808080")
 
 
-st.title("NYC Construction Applications Mapping")
-st.write("This mapping shows the approved applications for construction throughout New York City from Jan. 2025 to today.")
-st.map(approved_2025, latitude='latitude', longitude='longitude', color='color') #size='proposed_dwelling_units'
+sum_of_new_builds_2024 = len(all_results_df[(all_results_df['filing_date']< '2025-01-01') & (all_results_df['job_type'] == 'New Building')])
+sum_of_new_builds_2025 = len(all_results_df[(all_results_df['filing_date']> '2024-12-31') & (all_results_df['job_type'] == 'New Building')])
+sum_of_new_units_2024 = new_buildings_permitted[new_buildings_permitted['filing_date']<'2025-01-01']['proposed_dwelling_units'].sum()
+sum_of_new_units_2025 = new_buildings_permitted[new_buildings_permitted['filing_date']>'2024-12-31']['proposed_dwelling_units'].sum()
 
-'''
-The size of the dots is based on the number of proposed units for each project.
-The colors are based on the construction type.
-Red dots are projects for Alteration Type 1 (A1) which are considered major changes that require a new Certificate of Occupany.
-Green dots are for Alteration Type 2 (A2) which are considered minor interior renovations that do not require a new Certificate of Occupancy.
-Orange dots are for Alteration Type 3 (A3) which are considered minor renovations typically to the exterior like fences.
-Blue dots are for New Building (NB) construction
-'''
+st.title("New Construction Mapping")
+st.write("This mapping shows the permitted applications for new building construction throughout New York City from Jan. 2024.")
+
+col1, col2 = st.columns(2) 
+
+with col1:
+
+    with st.container():
+        st.metric(label="Number of New Building Applications - 2024",value=sum_of_new_builds_2024,border=True)
+
+    with st.container():
+        st.metric(label="Number of New Building Applications - 2025",value=sum_of_new_builds_2025,border=True)
+
+    with st.container():
+        st.metric(label="Number of New Permitted Units - 2024",value=sum_of_new_units_2024,border=True)
+    
+    with st.container():
+        st.metric(label="Number of New Permitted Units - 2025",value=sum_of_new_units_2025,border=True)
+
+with col2:
+    st.write("New Buildings Permitted Between '24-'25")
+    st.map(new_buildings_permitted, latitude='latitude', longitude='longitude',size='proposed_dwelling_units', color='color') 
+    '''
+    The size of the dots is based on the number of proposed units for each project. 
+
+    The colors are based on the building type: 
+
+    Red dots are classified as "Other", these include anything above a 3-Family Home.  
+    Green dots are "3 Family" homes.  
+    Orange dots are "2 Family" homes.  
+    Blue dots are "1 Family" homes.
+    '''
+
+
+
+
+
+
+
+
