@@ -5,7 +5,7 @@ import pandas as pd
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from pages.Construction_Application import remove_blanks, convert_to_float
+from pkg.construction_functions import remove_blanks, convert_to_float
 
 
 
