@@ -3,7 +3,7 @@ import streamlit as st
 import sodapy as sodapy
 
 # from sodapy import Socrata
-from construction_functions import connect_to_nyc_data, filter_to_new_buildings
+from pkg.construction_functions import connect_to_nyc_data, filter_to_new_buildings
 
 all_results_df = connect_to_nyc_data("w9ak-ipjd", "filing_date>'2023-12-31T00:00:00.000'")
 
