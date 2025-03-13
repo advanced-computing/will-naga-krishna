@@ -33,6 +33,7 @@ def connect_to_nyc_data(api_code,filter):
         print(len(results),offset)
         all_results.extend(results)
         #throttling data for now
+        # if len(results) < 500000
         if len(offset)>100000:
             break
     return pd.DataFrame.from_dict(all_results)
