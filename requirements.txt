@@ -10,3 +10,4 @@ plotnine
 pytest
 pytest-cov
 streamlit
+pandas-gbq
