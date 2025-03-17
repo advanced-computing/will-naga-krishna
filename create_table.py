@@ -1,4 +1,3 @@
-import pandas
 import pandas_gbq
 from pkg.load_data import connect_to_nyc_data
 
