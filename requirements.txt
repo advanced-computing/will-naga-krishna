@@ -11,3 +11,4 @@ pytest
 pytest-cov
 streamlit
 pandas-gbq
+google-cloud-bigquery==3.14.1
