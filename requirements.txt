@@ -4,9 +4,6 @@ numpy
 plotly
 sodapy
 plotnine
-# change
-# experiment 
-# change2
 pytest
 pytest-cov
 streamlit
