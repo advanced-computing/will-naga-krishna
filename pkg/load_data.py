@@ -1,8 +1,6 @@
 import streamlit as st # added
 from google.oauth2 import service_account #added
 import pandas_gbq # added
-import pandas as pd
-# from sodapy import Socrata
 
 def connect_to_nyc_data(table):
 
