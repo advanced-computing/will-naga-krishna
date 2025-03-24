@@ -10,27 +10,30 @@ st.title("Will & Naga")
 
 # description
 '''
-This dashboard shows the prices of properties sold in NYC in 2020.
+This dashboard shows the prices of properties sold in NYC in 2022.
 '''
 st.write("")
 
 # load data
-df_land = connect_to_nyc_data('w2pb-icbu', "sale_date>'2020-01-01T00:00:00.000'")
+table='sipa-adv-c-naga-will.nyc_construction_property.property_price'
+# filter='2020-01-01T00:00:00.000'
+df_land = connect_to_nyc_data(table)
+# df_land = connect_to_nyc_data('w2pb-icbu', "sale_date>'2020-01-01T00:00:00.000'")
 
 # form dataframe
-df_land = df_land[
-      ['borough',
-       'neighborhood', 
-       'building_class_category', 
-       'zip_code',
-       'land_square_feet',
-       'gross_square_feet',
-       'year_built',
-       'sale_price',
-       'sale_date',
-       'latitude',
-       'longitude']
-       ]
+# df_land = df_land[
+#       ['borough',
+#        'neighborhood', 
+#        'building_class_category', 
+#        'zip_code',
+#        'land_square_feet',
+#        'gross_square_feet',
+#        'year_built',
+#        'sale_price',
+#        'sale_date',
+#        'latitude',
+#        'longitude']
+#        ]
 
 # transform data into float
 df_land['sale_price'] = to_float(df_land['sale_price'])
@@ -60,11 +63,16 @@ avg_bronx = df_land_bronx['sale_price'].mean()
 avg_staten = df_land_staten['sale_price'].mean()
 
 # maximum price of sold properties
-max_manhattan = df_land_manhattan['sale_price'].max().round(2)
-max_brooklyn = df_land_brooklyn['sale_price'].max().round(2)
-max_queens = df_land_queens['sale_price'].max().round(2)
-max_bronx = df_land_bronx['sale_price'].max().round(2)
-max_staten = df_land_staten['sale_price'].max().round(2)
+max_manhattan = round(df_land_manhattan['sale_price'].max(), 2)
+max_brooklyn = round(df_land_brooklyn['sale_price'].max(), 2)
+max_queens = round(df_land_queens['sale_price'].max(), 2)
+max_bronx = round(df_land_bronx['sale_price'].max(), 2)
+max_staten = round(df_land_staten['sale_price'].max(), 2)
+# max_manhattan = df_land_manhattan['sale_price'].max().round(2)
+# max_brooklyn = df_land_brooklyn['sale_price'].max().round(2)
+# max_queens = df_land_queens['sale_price'].max().round(2)
+# max_bronx = df_land_bronx['sale_price'].max().round(2)
+# max_staten = df_land_staten['sale_price'].max().round(2)
 
 # delete the rows including 'Nan'
 df_land.dropna(subset=["latitude", "longitude", "sale_price"], inplace=True)
@@ -89,7 +97,7 @@ with col1:
 
 with col2:
     st.write("3D Map")
-    pydeck_chart(df_land_manhattan)
+    pydeck_chart(df_land_manhattan, "manhattan")
 
 st.write("")
 
@@ -111,7 +119,7 @@ with col1:
 
 with col2:
     st.write("3D Map")
-    pydeck_chart(df_land_brooklyn)
+    pydeck_chart(df_land_brooklyn, "brooklyn")
 
 st.write("")
 
@@ -132,7 +140,7 @@ with col1:
 
 with col2:
     st.write("3D Map")
-    pydeck_chart(df_land_queens)
+    pydeck_chart(df_land_queens, "queens")
 
 st.write("")
 
@@ -153,7 +161,7 @@ with col1:
 
 with col2:
     st.write("3D Map")
-    pydeck_chart(df_land_bronx)
+    pydeck_chart(df_land_bronx, "bronx")
 
 st.write("")
 
@@ -174,6 +182,6 @@ with col1:
 
 with col2:
     st.write("3D Map")
-    pydeck_chart(df_land_staten)
+    pydeck_chart(df_land_staten, "staten")
 
 st.write("")
