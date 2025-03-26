@@ -29,7 +29,12 @@ def connect_to_nyc_data(api_code,filter):
     all_results = []
     offset=0
     while True:
-        client = Socrata("data.cityofnewyork.us", None)
+        creds = st.secrets["socrata"]
+        client = Socrata("data.cityofnewyork.us",
+                         creds["app_token"],
+                         username=creds["username"],
+                         password=creds["password"]
+                         )
         results = client.get(api_code, where=filter, limit=50000,offset=offset)
         offset = offset + 50000
         print(len(results),offset)
@@ -60,27 +65,8 @@ def convert_to_float(df, columns):
 
 
 def filter_to_new_buildings(df):
-    no_blanks_df = df[['job_filing_number',
-                             'filing_status',
-                             'borough',
-                             'house_no',
-                             'street_name',
-                             'initial_cost',
-                             'building_type',
-                             'existing_stories',
-                             'existing_height',
-                             'existing_dwelling_units',
-                             'proposed_no_of_stories',
-                             'proposed_height',
-                             'proposed_dwelling_units',
-                             'filing_date',
-                             'current_status_date',
-                             'first_permit_date',
-                             'latitude',
-                             'longitude',
-                             'job_type']].copy()
 
-    no_blanks_df = remove_blanks(no_blanks_df,['latitude','longitude'])
+    no_blanks_df = remove_blanks(df,['latitude','longitude'])
 
 
     no_blanks_df = convert_column_to_int(no_blanks_df,['proposed_dwelling_units'])
@@ -109,7 +95,16 @@ def connect_to_bigquery(table):
     # """
 
     sql = f"""
-    SELECT *
+    SELECT job_filing_number,
+            filing_status,
+            building_type,
+            proposed_no_of_stories,
+            proposed_height,
+            proposed_dwelling_units,
+            filing_date,
+            latitude,
+            longitude,
+            job_type
     FROM `{table}`
     """
 

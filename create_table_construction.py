@@ -2,7 +2,7 @@ import pandas_gbq
 # from sodapy import Socrata
 # import pandas as pd
 # from pkg.load_data import connect_to_nyc_data
-from pkg.construction_functions import connect_to_nyc_data, filter_to_new_buildings
+from pkg.construction_functions import connect_to_nyc_data
 
 project_id = "sipa-adv-c-naga-will"
 table_id = 'nyc_construction_property.construction_applications'
@@ -12,11 +12,13 @@ table_id = 'nyc_construction_property.construction_applications'
 
 all_results_df = connect_to_nyc_data("w9ak-ipjd", "filing_date>'2023-12-31T00:00:00.000'")
 
-new_buildings_permitted = filter_to_new_buildings(all_results_df)
+# new_buildings_permitted = filter_to_new_buildings(all_results_df)
 
+print(all_results_df.shape)
+# print(new_buildings_permitted.shape)
 
 # make a table
-pandas_gbq.to_gbq(new_buildings_permitted,
+pandas_gbq.to_gbq(all_results_df,
                   table_id,
                   project_id=project_id,
                   if_exists='replace')
