@@ -1,6 +1,9 @@
 import streamlit as st
 
-st.title('Project Title: Mapping Construction in NYC - Will & Naga')
+st.title('Mapping Construction Information in NYC')
+st.title('by Will & Naga & Krishna')
+
+st.sidebar.header("Construction Information in NYC")
 
 '''
 Description: This project takes the NYC Department of Construction construction applications
