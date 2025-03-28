@@ -5,7 +5,7 @@ import streamlit as st # added
 from google.oauth2 import service_account #added
 import pandas_gbq # added
 
-
+@st.cache_resource
 def connect_to_nyc_data(api_code,filter):
         # Unauthenticated client only works with public data sets. Note 'None'
         # in place of application token, and no username or password:
@@ -45,25 +45,22 @@ def connect_to_nyc_data(api_code,filter):
             break
     return pd.DataFrame.from_dict(all_results)
 
-
+@st.cache_resource
 def remove_blanks(df, columns):
     return df[df[columns].notna().all(axis=1)]
 
-
+@st.cache_resource
 def convert_column_to_int(df,columns):
     for col in columns:
         df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0).astype(int)
     return df
 
-
-
-
+@st.cache_resource
 def convert_to_float(df, columns):
     df[columns] = df[columns].astype(float)
     return df
 
-
-
+@st.cache_resource
 def filter_to_new_buildings(df):
 
     no_blanks_df = remove_blanks(df,['latitude','longitude'])
@@ -82,7 +79,7 @@ def filter_to_new_buildings(df):
 
     return permitted[permitted['job_type']== 'New Building']
 
-
+@st.cache_resource
 def connect_to_bigquery(table):
 
     # create API client

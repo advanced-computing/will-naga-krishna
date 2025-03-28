@@ -2,6 +2,7 @@ import streamlit as st # added
 from google.oauth2 import service_account #added
 import pandas_gbq # added
 
+@st.cache_resource
 def connect_to_bigquery_manhattan(table):
 
     # create API client
@@ -20,11 +21,12 @@ def connect_to_bigquery_manhattan(table):
             longitude,
             job_type
     FROM `{table}`
-    WHERE UPPER(borough)='MANHATTAN' or borough='1'
+    WHERE (UPPER(borough)='MANHATTAN' or borough='1') AND job_type='New Building'
     """
 
     return pandas_gbq.read_gbq(sql, credentials=credentials)
 
+@st.cache_resource
 def connect_to_bigquery_bronx(table):
 
     # create API client
@@ -48,11 +50,12 @@ def connect_to_bigquery_bronx(table):
             longitude,
             job_type
     FROM `{table}`
-    WHERE UPPER(borough)='BRONX' or borough='2'
+    WHERE UPPER(borough)='BRONX' or borough='2' AND job_type='New Building'
     """
 
     return pandas_gbq.read_gbq(sql, credentials=credentials)
 
+@st.cache_resource
 def connect_to_bigquery_brooklyn(table):
 
     # create API client
@@ -76,11 +79,12 @@ def connect_to_bigquery_brooklyn(table):
             longitude,
             job_type
     FROM `{table}`
-    WHERE UPPER(borough)='BROOKLYN' or borough='3'
+    WHERE UPPER(borough)='BROOKLYN' or borough='3' AND job_type='New Building'
     """
 
     return pandas_gbq.read_gbq(sql, credentials=credentials)
 
+@st.cache_resource
 def connect_to_bigquery_queens(table):
 
     # create API client
@@ -104,11 +108,12 @@ def connect_to_bigquery_queens(table):
             longitude,
             job_type
     FROM `{table}`
-    WHERE UPPER(borough)='QUEENS' or borough='4'
+    WHERE UPPER(borough)='QUEENS' or borough='4' AND job_type='New Building'
     """
 
     return pandas_gbq.read_gbq(sql, credentials=credentials)
 
+@st.cache_resource
 def connect_to_bigquery_staten(table):
 
     # create API client
@@ -132,7 +137,7 @@ def connect_to_bigquery_staten(table):
             longitude,
             job_type
     FROM `{table}`
-    WHERE UPPER(borough)='STATEN ISLAND' or borough='5'
+    WHERE UPPER(borough)='STATEN ISLAND' or borough='5' AND job_type='New Building'
     """
 
     return pandas_gbq.read_gbq(sql, credentials=credentials)
