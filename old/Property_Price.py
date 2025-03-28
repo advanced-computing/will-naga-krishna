@@ -2,7 +2,7 @@
 import streamlit as st
 from pkg.mapping import pydeck_chart
 from pkg.to_float import to_float, to_borough_name
-from pkg.load_data import connect_to_nyc_data
+from pkg.load_data_property import connect_to_nyc_data
 
 # title
 st.title("NYC Property Price")

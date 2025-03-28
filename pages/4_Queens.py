@@ -2,7 +2,7 @@
 import streamlit as st
 from pkg.mapping import pydeck_chart
 from pkg.to_float import to_float
-from pkg.load_data import connect_to_data_queens
+from pkg.load_data_property import connect_to_data_queens
 
 # title
 st.title("Queens")
@@ -28,6 +28,7 @@ df_land = connect_to_data_queens(table)
 
 # transform data into float
 df_land['sale_price'] = to_float(df_land['sale_price'])
+df_land['land_square_feet'] = to_float(df_land['land_square_feet'])
 df_land['latitude'] = to_float(df_land['latitude'])
 df_land['longitude'] = to_float(df_land['longitude'])
 
@@ -37,6 +38,9 @@ num = len(df_land)
 # avg price of sold properties
 avg = df_land['sale_price'].mean()
 
+# avg price per land square foot
+avg_price_per_sqft = df_land['sale_price'].mean() / df_land['land_square_feet'].mean()
+
 # maximum price of sold properties
 max = round(df_land['sale_price'].max(), 2)
 
@@ -45,8 +49,8 @@ df_land.dropna(subset=["latitude", "longitude", "sale_price"], inplace=True)
 
 # create a dashboard
 st.write("")
-
 col1, col2 = st.columns(2) 
+col3, = st.columns(1)
 
 with col1:
     with st.container():
@@ -54,9 +58,18 @@ with col1:
 
     with st.container():
         st.metric("The average price of sold properties", f"${avg:,.0f}", border=True)
+
+    with st.container():
+        st.metric("The average price of sold properties per land square feet", 
+                  f"${avg_price_per_sqft:,.0f}", border=True)
     
     with st.container():
         st.metric("The maximum price of sold properties", f"${max:,.0f}", border=True)
 
 with col2:
     pydeck_chart(df_land, "queens")
+
+with col3:
+    st.write('''
+    - The height and color of the dots in the map are based on the relative prices of sold properties. 
+    ''')

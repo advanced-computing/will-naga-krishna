@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.set_page_config(page_title="Mapping Construction Information in NYC", page_icon="🏠")
+
 st.title('Mapping Construction Information in NYC')
 st.title('by Will & Naga & Krishna')
 

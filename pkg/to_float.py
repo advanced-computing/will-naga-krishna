@@ -18,6 +18,9 @@ import pandas as pd
 #     else:
 #         return 'Unknown'
 
-def to_float(value: pd.Series):
-    return value.astype(float)
+def to_float(series):
+    return pd.to_numeric(
+        series.astype(str).str.replace(',', ''),
+        errors='coerce'
+    )
 
