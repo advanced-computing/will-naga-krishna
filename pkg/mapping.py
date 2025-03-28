@@ -1,6 +1,7 @@
 import pydeck as pdk
 import streamlit as st
 
+@st.cache_resource
 def pydeck_chart(df, boro):
 
     center_coords = {

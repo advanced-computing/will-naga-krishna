@@ -25,6 +25,7 @@ import pandas_gbq # added
 
 #     return pandas_gbq.read_gbq(sql, credentials=credentials)
 
+@st.cache_resource
 def connect_to_data_manhattan(table):
 
     # create API client
@@ -49,6 +50,7 @@ def connect_to_data_manhattan(table):
 
     return pandas_gbq.read_gbq(sql, credentials=credentials)
 
+@st.cache_resource
 def connect_to_data_bronx(table):
 
     # create API client
@@ -73,6 +75,7 @@ def connect_to_data_bronx(table):
 
     return pandas_gbq.read_gbq(sql, credentials=credentials)
 
+@st.cache_resource
 def connect_to_data_brooklyn(table):
 
     # create API client
@@ -97,6 +100,7 @@ def connect_to_data_brooklyn(table):
 
     return pandas_gbq.read_gbq(sql, credentials=credentials)
 
+@st.cache_resource
 def connect_to_data_queens(table):
 
     # create API client
@@ -121,6 +125,7 @@ def connect_to_data_queens(table):
 
     return pandas_gbq.read_gbq(sql, credentials=credentials)
 
+@st.cache_resource
 def connect_to_data_staten(table):
 
     # create API client
