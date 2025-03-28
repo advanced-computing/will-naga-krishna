@@ -60,7 +60,7 @@ with col1:
         st.metric("The average price of sold properties", f"${avg:,.0f}", border=True)
 
     with st.container():
-        st.metric("The average price of sold properties per land square feet", 
+        st.metric("The average price of sold properties per square feet", 
                   f"${avg_price_per_sqft:,.0f}", border=True)
     
     with st.container():
