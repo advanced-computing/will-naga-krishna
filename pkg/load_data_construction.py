@@ -10,16 +10,7 @@ def connect_to_bigquery_manhattan(table):
     credentials = service_account.Credentials.from_service_account_info(creds)
 
     sql = f"""
-    SELECT job_filing_number,
-            filing_status,
-            building_type,
-            proposed_no_of_stories,
-            proposed_height,
-            proposed_dwelling_units,
-            filing_date,
-            latitude,
-            longitude,
-            job_type
+    SELECT *
     FROM `{table}`
     WHERE (UPPER(borough)='MANHATTAN' or borough='1') AND job_type='New Building'
     """

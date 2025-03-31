@@ -19,7 +19,7 @@ This dashboard shows the following information in NYC:
 # construnction –> Will Part
 
 # load data
-table='sipa-adv-c-naga-will.nyc_construction_property.construction_applications'
+table='sipa-adv-c-naga-will.nyc_construction_property.construction_applications_2'
 df_construction = connect_to_bigquery_manhattan(table)
 new_buildings_permitted = filter_to_new_buildings(df_construction)
 
