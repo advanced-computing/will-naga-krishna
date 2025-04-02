@@ -16,7 +16,7 @@ This dashboard shows the following information in NYC:
 '''
 
 # construnction –> Will Part
-table='sipa-adv-c-naga-will.nyc_construction_property.construction_applications_2'
+table='sipa-adv-c-naga-will.nyc_construction_property.construction_applications'
 df_construction = connect_to_bigquery_bronx(table)
 new_buildings_permitted = filter_to_new_buildings(df_construction)
 
@@ -91,6 +91,7 @@ df_land['sale_price'] = to_float(df_land['sale_price'])
 df_land['land_square_feet'] = to_float(df_land['land_square_feet'])
 df_land['latitude'] = to_float(df_land['latitude'])
 df_land['longitude'] = to_float(df_land['longitude'])
+df_land = df_land[(df_land["sale_price"] > 0) & (df_land["land_square_feet"] > 0)]
 
 # number of sold properties
 num = len(df_land)
@@ -98,11 +99,11 @@ num = len(df_land)
 # avg price of sold properties
 avg = df_land['sale_price'].mean()
 
-# avg price per land square foot
-avg_price_per_sqft = df_land['sale_price'].mean() / df_land['land_square_feet'].mean()
-
 # maximum price of sold properties
-max = round(df_land['sale_price'].max(), 2)
+max = df_land['sale_price'].max()
+
+# maximum price of sold properties per square foot
+max_per_sf = (df_land['sale_price']/df_land['land_square_feet']).max()
 
 # delete the rows including 'Nan'
 df_land.dropna(subset=["latitude", "longitude", "sale_price"], inplace=True)
@@ -120,16 +121,15 @@ with col1:
         st.metric("The average price of sold properties", f"${avg:,.0f}", border=True)
 
     with st.container():
-        st.metric("The average price of sold properties per square feet", 
-                  f"${avg_price_per_sqft:,.0f}", border=True)
+        st.metric("The maximum price of sold properties", f"${max:,.0f}", border=True)
     
     with st.container():
-        st.metric("The maximum price of sold properties", f"${max:,.0f}", border=True)
+        st.metric("The maximum price of sold properties per land sf", f"${max_per_sf:,.0f}", border=True)
 
 with col2:
     pydeck_chart(df_land, "bronx")
 
 with col3:
     st.write('''
-    - The height and color of the dots in the map are based on the relative prices of sold properties. 
+    - The height and color of the dots in the map are based on the relative prices of sold properties per land square foot. 
     ''')

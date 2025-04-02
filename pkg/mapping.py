@@ -16,7 +16,8 @@ def pydeck_chart(df, boro):
 
     # filtering
     df = df.dropna(subset=["sale_price", "latitude", "longitude"])
-    df = df[df["sale_price"] > 0]
+    df = df[(df["sale_price"] > 0) & (df["land_square_feet"] > 0)]
+    df['price_per_sf'] = df['sale_price'] / df['land_square_feet']
 
     # mapping
     st.pydeck_chart(
@@ -33,7 +34,8 @@ def pydeck_chart(df, boro):
                     "HexagonLayer",
                     data=df,
                     get_position="[longitude, latitude]",
-                    radius=200,
+                    get_elevation="price_per_sf",
+                    radius=100,
                     elevation_scale=4,
                     elevation_range=[0, 1000],
                     pickable=True,
