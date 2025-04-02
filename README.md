@@ -6,3 +6,6 @@
 <a target="_blank" href="https://colab.research.google.com/github/advanced-computing/willnaga">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
+
+### Data Loading Method: Incremental
+We are using an incremental data load method to load data from the NYC OpenData API. This method is preferable to using the append method because it allows us to update data that is already in the Google BigQuery table as well as add additional rows that are new. Additonally, this method should be faster than using a truncate and load method which would recreate the entire table each time the script is run. We are hoping that using an incremental method not only captures the most up to date data but also helps speed up the site.
