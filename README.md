@@ -1,8 +1,10 @@
 # Project Title: Mapping Construction in NYC
 
-## Description: This project takes maps of construction applications and prices of sold properties in NYC and combines them to understand the relationsship between the amount of housing construction and the property prices.
+## Description
+This project takes maps of construction applications and prices of sold properties in NYC and combines them to understand the relationsship between the amount of housing construction and the property prices.
 
-## Instruction: We are in the progress of developing the project but we hope that this can provide policymakers and those curious about the city a constant understanding of the current housing construction environment.
+## Instruction
+We are in the progress of developing the project but we hope that this can provide policymakers and those curious about the city a constant understanding of the current housing construction environment.
 
 <a target="_blank" href="https://colab.research.google.com/github/advanced-computing/willnaga">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
