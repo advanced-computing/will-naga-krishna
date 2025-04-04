@@ -34,6 +34,6 @@ We are in the progress of developing the project but we hope that this can provi
 - 4. Select the repository destination. Select "Open." 
 - 5. Open a new Terminal. 
 - 6. Run the following command `python -m venv .venv` to set up the virtual environment. 
-- 7. Right click on the file path for the virtual environment and copy the file path. Activate the environment by running the following command `source (filepath)/bin/activate`
+- 7. Right click on the file path for the virtual environment and copy the file path. Activate the environment by running the following command `source ~filepath/bin/activate`
 - 8. Install the requirements using `pip install -r requirements.txt`.
 - 9. Run the app by putting `streamlit run Home.py`.
