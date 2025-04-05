@@ -3,13 +3,6 @@
 ## Description
 This project takes maps of construction applications and prices of sold properties in NYC and combines them to understand the relationsship between the amount of housing construction and the property prices.
 
-## Instruction
-We are in the progress of developing the project but we hope that this can provide policymakers and those curious about the city a constant understanding of the current housing construction environment.
-
-<a target="_blank" href="https://colab.research.google.com/github/advanced-computing/willnaga">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
-
 ## Proposal 
 
 ### Research Questions
@@ -34,6 +27,6 @@ We are in the progress of developing the project but we hope that this can provi
 - 4. Select the repository destination. Select "Open." 
 - 5. Open a new Terminal. 
 - 6. Run the following command `python -m venv .venv` to set up the virtual environment. 
-- 7. Right click on the file path for the virtual environment and copy the file path. Activate the environment by running the following command `source ~filepath/bin/activate`
+- 7. Right click on the file path for the virtual environment and copy the file path. Activate the environment by running the following command `source .venv/bin/activate` if you are a Mac user. If you are a Windows user, [refer to this page](https://docs.python.org/3/library/venv.html#creating-virtual-environments).
 - 8. Install the requirements using `pip install -r requirements.txt`.
 - 9. Run the app by putting `streamlit run Home.py`.
