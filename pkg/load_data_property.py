@@ -43,7 +43,8 @@ def connect_to_data_manhattan(table):
             sale_date,
             latitude,
             longitude,
-            land_square_feet
+            land_square_feet,
+            building_class_category
     FROM `{table}`
     WHERE UPPER(borough)='MANHATTAN' or borough='1'
     """
@@ -68,7 +69,8 @@ def connect_to_data_bronx(table):
             sale_date,
             latitude,
             longitude,
-            land_square_feet
+            land_square_feet,
+            building_class_category
     FROM `{table}`
     WHERE UPPER(borough)='BRONX' or borough='2'
     """
@@ -93,7 +95,8 @@ def connect_to_data_brooklyn(table):
             sale_date,
             latitude,
             longitude,
-            land_square_feet
+            land_square_feet,
+            building_class_category
     FROM `{table}`
     WHERE UPPER(borough)='BROOKLYN' or borough='3'
     """
@@ -118,7 +121,8 @@ def connect_to_data_queens(table):
             sale_date,
             latitude,
             longitude,
-            land_square_feet
+            land_square_feet,
+            building_class_category
     FROM `{table}`
     WHERE UPPER(borough)='QUEENS' or borough='4'
     """
@@ -143,7 +147,8 @@ def connect_to_data_staten(table):
             sale_date,
             latitude,
             longitude,
-            land_square_feet
+            land_square_feet,
+            building_class_category
     FROM `{table}`
     WHERE UPPER(borough)='STATEN ISLAND' or borough='5'
     """

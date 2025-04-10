@@ -16,7 +16,7 @@
 #this passed the pytest
 
 import pandas as pd
-from pkg.to_float import to_float
+from pkg.property_functions import to_float
 
 def test_to_float():
 

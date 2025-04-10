@@ -1,7 +1,7 @@
 # import libraries
 import streamlit as st
 from pkg.mapping import pydeck_chart
-from pkg.to_float import to_float, to_borough_name
+from pkg.property_functions import to_float, to_borough_name
 from pkg.load_data_property import connect_to_nyc_data
 
 # title
