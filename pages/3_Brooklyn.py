@@ -129,7 +129,7 @@ with tab2:
             st.metric("The maximum price of sold properties", f"${max:,.0f}", border=True)
         
         with st.container():
-            st.metric("The maximum price of sold properties per land sf", f"${avg_per_sf:,.0f}", border=True)
+            st.metric("The average price of sold properties per land sf", f"${avg_per_sf:,.0f}", border=True)
 
     with col2:
         pydeck_chart(df_land, "brooklyn")
