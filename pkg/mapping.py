@@ -2,6 +2,7 @@ import pydeck as pdk
 import streamlit as st
 from pkg.property_functions import to_residential_type
 
+@st.cache_resource
 def hex_to_rgb(hex_color):
     hex_color = hex_color.lstrip('#')
     return [int(hex_color[i:i+2], 16) for i in (0, 2, 4)]
