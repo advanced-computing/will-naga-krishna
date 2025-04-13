@@ -1,9 +1,7 @@
 pandas
 jupyter==1.*
-numpy
 plotly
 sodapy
-plotnine
 pytest
 pytest-cov
 streamlit
