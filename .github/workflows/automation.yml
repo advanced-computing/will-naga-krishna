@@ -19,5 +19,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: load data
+        with: # Set the secret as an input
+          super_secret: ${{.streamlit/service_account_key.json}}
         run: |
           python update_table_construction_incremental.py
