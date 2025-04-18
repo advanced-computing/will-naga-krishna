@@ -19,5 +19,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: load data
+        env: # Set the secret as an input
+          super_secret: ${{ secrets.WILL_NAGA_KRISHNA_SECRETS }}
         run: |
-          python update_table_construction_incremental.py
+          python update_table_construction_incremental.py "$super_secret"
