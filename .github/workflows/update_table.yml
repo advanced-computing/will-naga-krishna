@@ -22,15 +22,15 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Write GCP credentials to file
-        run: |
-          mkdir -p .streamlit
-          echo '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}' > .streamlit/service_account_key.json
+      # - name: Write GCP credentials to file
+      #   run: |
+      #     mkdir -p .streamlit
+      #     echo '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}' > .streamlit/service_account_key.json
 
-      - name: Set GOOGLE_APPLICATION_CREDENTIALS
-        run: echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/.streamlit/service_account_key.json" >> $GITHUB_ENV
+      # - name: Set GOOGLE_APPLICATION_CREDENTIALS
+      #   run: echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/.streamlit/service_account_key.json" >> $GITHUB_ENV
 
       - name: Update table
         env:
-          super_secret: ${{ secrets.WILL_NAGA_KRISHNA_SECRETS }}
+          GCP_SA_KEY: ${{ secrets.WILL_NAGA_KRISHNA_SECRETS }}
         run: python update_table_construction_incremental.py
