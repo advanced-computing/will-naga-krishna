@@ -10,18 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check directory structure
-      run: |
-        echo "Contents of current directory:"
-        ls -ls
-        echo "Contents of repository root:"
-        find . -type f -name "*.py" | sort
-
-    - uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-
-    - name: Update table
-      env:
-        super_secret: ${{ secrets.WILL_NAGA_KRISHNA_SECRETS }}
-      run: python update_table_construction_incremental.py
+      - name: Checkout repository
+        uses: actions/checkout@v4
+    
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+    
+      - name: Run script
+        run: |
+          cd "${{ github.workspace }}"
+          python update_table_construction_incremental.py
