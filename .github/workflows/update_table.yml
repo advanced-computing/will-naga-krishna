@@ -24,7 +24,7 @@ jobs:
     - name: Update table
       env:
         super_secret: ${{ secrets.WILL_NAGA_KRISHNA_SECRETS }}
-      run: python update_table_construction_incremental.py
+      run: python ${{ github.workspace}}/update_table_construction_incremental.py
 
 
 
