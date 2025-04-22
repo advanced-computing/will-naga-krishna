@@ -1,9 +1,13 @@
+from google.oauth2 import service_account
 import pandas_gbq
 from sodapy import Socrata
 import pandas as pd
 
 project_id = "sipa-adv-c-naga-will"
 table_id = 'nyc_construction_property.construction_applications'
+credentials = service_account.Credentials.from_service_account_file(
+    ".streamlit/service_account_key.json"
+)
 
 def incremental_load():
 
@@ -11,7 +15,9 @@ def incremental_load():
     sql = """
         SELECT MAX(filing_date) AS latest_date FROM `sipa-adv-c-naga-will.nyc_construction_property.construction_applications`
     """
-    latest_date_df = pandas_gbq.read_gbq(sql, project_id=project_id)
+    latest_date_df = pandas_gbq.read_gbq(sql, 
+                                         project_id=project_id, 
+                                         credentials=credentials)
     latest_date = latest_date_df["latest_date"].iloc[0]
 
     # create filter for new data
@@ -65,7 +71,8 @@ def incremental_load():
         pandas_gbq.to_gbq(df_construction,
                                 table_id,
                                 project_id=project_id,
-                                if_exists='append')
+                                if_exists='append',
+                                credentials=credentials)
         print("Incremental data uploaded.")
 
     else:
