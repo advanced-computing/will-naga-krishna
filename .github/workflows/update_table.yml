@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-    
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -21,9 +21,16 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          # or: pip install pandas_gbq
-    
-      - name: Run script
+
+      - name: Write GCP credentials to file
         run: |
-          cd "${{ github.workspace }}"
-          python update_table_construction_incremental.py
+          mkdir -p .streamlit
+          echo '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}' > .streamlit/service_account_key.json
+
+      - name: Set GOOGLE_APPLICATION_CREDENTIALS
+        run: echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/.streamlit/service_account_key.json" >> $GITHUB_ENV
+
+      - name: Update table
+        env:
+          super_secret: ${{ secrets.WILL_NAGA_KRISHNA_SECRETS }}
+        run: python update_table_construction_incremental.py
