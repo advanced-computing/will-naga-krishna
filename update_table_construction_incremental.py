@@ -2,12 +2,13 @@ from google.oauth2 import service_account
 import pandas_gbq
 from sodapy import Socrata
 import pandas as pd
+import json
+import os
 
 project_id = "sipa-adv-c-naga-will"
 table_id = 'nyc_construction_property.construction_applications'
-credentials = service_account.Credentials.from_service_account_file(
-    ".streamlit/service_account_key.json"
-)
+service_account_info = json.loads(os.environ["GCP_SA_KEY"])
+credentials = service_account.Credentials.from_service_account_info(service_account_info)
 
 def incremental_load():
 
