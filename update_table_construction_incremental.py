@@ -7,7 +7,7 @@ import os
 
 project_id = "sipa-adv-c-naga-will"
 table_id = 'nyc_construction_property.construction_applications'
-service_account_info = json.loads(os.environ["GCP_SA_KEY"])
+service_account_info = json.loads(os.environ["BQ_KEY"])
 credentials = service_account.Credentials.from_service_account_info(service_account_info)
 
 def incremental_load():
