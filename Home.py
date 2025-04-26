@@ -1,10 +1,11 @@
 import streamlit as st
 
-st.set_page_config(page_title="Mapping Construction Information in NYC", page_icon="🏠")
+st.set_page_config(page_title="Construction Information in NYC", page_icon="🏠")
 st.sidebar.header("Construction Information in NYC")
 
-st.title('Mapping Construction Information in NYC')
-st.title('by Will & Naga & Krishna')
+st.title('Construction Information in NYC')
+st.markdown("<h5 style='text-align: right;'>by Will & Naga & Krishna</h5>", 
+            unsafe_allow_html=True)
 
 st.header('Description',divider=True)
 st.markdown('''
@@ -20,7 +21,18 @@ st.markdown('''
             - What kinds of housing are being prioritized by the city? New developments? Renovations? Low density? High density? Luxury? Affordable?
             - Do people apply for construction permits in areas with high property prices?
 
-            **Datasets**
+            **Data Source**
             - [Construction Applications](https://data.cityofnewyork.us/Housing-Development/DOB-NOW-Build-Job-Application-Filings/w9ak-ipjd/about_data)
             - [Prices of Sold Properties](https://data.cityofnewyork.us/City-Government/NYC-Citywide-Annualized-Calendar-Sales-Update/w2pb-icbu/about_data)
+            ''')
+
+st.header('Benefits',divider=True)
+st.markdown('''
+            **For Private Sector**
+            - ...
+            - ...
+
+            **For Public Sector**
+            - ...
+            - ...
             ''')
