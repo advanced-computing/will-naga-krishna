@@ -8,16 +8,16 @@ from pkg.construction_functions import filter_to_new_buildings
 # title
 st.title("Queens")
 
-# description
-'''
-This dashboard shows the following information in NYC:
-- the permitted applications for new building construction from January 2024.
-- the prices of properties sold in 2022.
-'''
+# Takeaways
+st.markdown('''
+            - ...
+            - ...
+            ''')
 
 tab1, tab2 = st.tabs(["Construction Applications", "Property Price"])
 
 with tab1:
+    st.markdown("Permitted Applications for New Building Construction from January 2024")
 
     # construnction –> Will Part
     table='sipa-adv-c-naga-will.nyc_construction_property.construction_applications'
@@ -84,6 +84,7 @@ with tab1:
         ''')
 
 with tab2:
+    st.markdown("Prices of Sold Properties in 2022")
 
     # prorty price –> Naga Part
 
