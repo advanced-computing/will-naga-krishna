@@ -10,8 +10,11 @@ st.markdown("<h5 style='text-align: right;'>by Will & Naga & Krishna</h5>",
 st.header('Description',divider=True)
 st.markdown('''
             This project takes maps of construction applications and prices of sold properties 
-            in NYC and combines them to understand the relationsship between the amount of 
+            in NYC and combines them to understand the relationship between the amount of 
             housing construction and the property prices.
+
+            This project was developed in response to the rising cost of living throughout New York City and, in particular, the rising rents.
+            This tool is meant to help understand how the city is responding to the lack of housing supply.
             ''')
 
 st.header('Proposal',divider=True)

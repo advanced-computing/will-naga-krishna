@@ -10,8 +10,10 @@ st.title("Staten Island")
 
 # Takeaways
 st.markdown('''
-            - Most of the construction applications are for family units.
+            - Most of the construction applications are for 1-2 family units.
             - The prices of sold properties are the lowest among the NYC boroughs.
+            - Staten Island tends to look much more like a typical suburb compared to the rest of NYC so it's not surprising that the development are mostly 1-2 family homes.
+            - It may be worth exploring why the multi-family development is concentrated on the New Jersey side of the island.
             ''')
 
 tab1, tab2 = st.tabs(["Construction Applications", "Property Price"])
