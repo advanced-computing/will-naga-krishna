@@ -10,8 +10,8 @@ st.title("Queens")
 
 # Takeaways
 st.markdown('''
-            - ...
-            - ...
+            - The number of permitted applications for familiy units is much higher than in other boroughs.
+            - The prices of sold properties are relatively lower than in Manhattan and Brooklyn.
             ''')
 
 tab1, tab2 = st.tabs(["Construction Applications", "Property Price"])
