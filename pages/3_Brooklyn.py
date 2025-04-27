@@ -10,8 +10,8 @@ st.title("Brooklyn")
 
 # Takeaways
 st.markdown('''
-            - ...
-            - ...
+            - Construction applications are more diversified than in Manhattan and Bronx. 
+            - The prices of sold properties tend to be high in the area near Manhattan.
             ''')
 
 tab1, tab2 = st.tabs(["Construction Applications", "Property Price"])

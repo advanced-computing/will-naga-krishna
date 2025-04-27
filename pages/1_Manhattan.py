@@ -11,8 +11,8 @@ st.title("Manhattan")
 
 # Takeaways
 st.markdown('''
-            - ...
-            - ...
+            - There are only a few permitted applications for new building construction although the number of sold properties is over 1,300.
+            - Most of them are for commercial buildings and super expensive.
             ''')
 
 tab1, tab2 = st.tabs(["Construction Applications", "Property Price"])

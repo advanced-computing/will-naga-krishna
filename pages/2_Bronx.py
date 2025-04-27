@@ -10,8 +10,8 @@ st.title("Bronx")
 
 # Takeaways
 st.markdown('''
-            - ...
-            - ...
+            - There are many permitted applications for new building construction, and they are almost for families.
+            - Compared with Manhattan, the prices of sold properties are much lower.
             ''')
 
 tab1, tab2 = st.tabs(["Construction Applications", "Property Price"])

@@ -10,8 +10,8 @@ st.title("Staten Island")
 
 # Takeaways
 st.markdown('''
-            - ...
-            - ...
+            - Most of the construction applications are for family units.
+            - The prices of sold properties are the lowest among the NYC boroughs.
             ''')
 
 tab1, tab2 = st.tabs(["Construction Applications", "Property Price"])
