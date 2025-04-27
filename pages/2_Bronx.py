@@ -10,8 +10,9 @@ st.title("Bronx")
 
 # Takeaways
 st.markdown('''
-            - There are many permitted applications for new building construction, and they are almost for families.
-            - Compared with Manhattan, the prices of sold properties are much lower.
+            - Historically, the Bronx's has seen lower property values compared to other boroughs so it's not suprise that there are many permitted applications for new building construction and lower sale values.
+            - The Bronx has seen a development boom for some time now in the South Bronx and this trend should continue with the East Bronx rezoning and transit development.
+            - It is not clear that the East Bronx rezoning is having an impact yet but it is something to monitor going forward.
             ''')
 
 tab1, tab2 = st.tabs(["Construction Applications", "Property Price"])

@@ -10,8 +10,11 @@ st.title("Brooklyn")
 
 # Takeaways
 st.markdown('''
-            - Construction applications are more diversified than in Manhattan and Bronx. 
-            - The prices of sold properties tend to be high in the area near Manhattan.
+            - The building types being applied for are more diversified than in Manhattan and the Bronx. 
+            - The prices of sold properties tend to be high in the areas near Manhattan.
+            - Brooklyn has seen the most construction activity compared to other boroughs as large, formally industrial areas like Gowanus are rezoned for residential use while the popularity of the borough has also increased.
+            - Parts of Bedford-Stuyvesant up through Greenpoint have also seen construction applications recently and these areas have also been quite valuable in terms of sales.
+            - The outer parts of the borough have lower sale values but are also seeing development.
             ''')
 
 tab1, tab2 = st.tabs(["Construction Applications", "Property Price"])

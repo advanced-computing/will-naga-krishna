@@ -12,7 +12,8 @@ st.title("Manhattan")
 # Takeaways
 st.markdown('''
             - There are only a few permitted applications for new building construction although the number of sold properties is over 1,300.
-            - Most of them are for commercial buildings and super expensive.
+            - Likely a result of the limited available land for construction, there have been very high sale values but limited numbers of new construction.
+            - Manhattan will likely not see major new development because of its density but the construction will exclusively be multi-unit.
             ''')
 
 tab1, tab2 = st.tabs(["Construction Applications", "Property Price"])
