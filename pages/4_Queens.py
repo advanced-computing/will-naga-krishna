@@ -14,7 +14,7 @@ st.markdown('''
             - The prices of sold properties are relatively lower than in Manhattan and Brooklyn.
             - Applications for new construction have been fairly high in the borough although they have not been as prominantly multi-family.
             - Areas like Long Island City have seen significant multi-family new development.
-            - The geography and denisty of Queen is quite diverse compared to the other boroughs which may influence the construction.
+            - The geography and denisty of Queens is quite diverse compared to the other boroughs which may influence the construction.
             ''')
 
 tab1, tab2 = st.tabs(["Construction Applications", "Property Price"])

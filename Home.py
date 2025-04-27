@@ -25,8 +25,8 @@ st.markdown('''
             - Do people apply for construction permits in areas with high property prices?
 
             **Data Source**
-            - [Construction Applications](https://data.cityofnewyork.us/Housing-Development/DOB-NOW-Build-Job-Application-Filings/w9ak-ipjd/about_data)
-            - [Prices of Sold Properties](https://data.cityofnewyork.us/City-Government/NYC-Citywide-Annualized-Calendar-Sales-Update/w2pb-icbu/about_data)
+            - [Construction Applications](https://data.cityofnewyork.us/Housing-Development/DOB-NOW-Build-Job-Application-Filings/w9ak-ipjd/about_data): Updated daily by the Department of Buildings. The table in Google Cloud is updated daily by the workflow we have set.
+            - [Prices of Sold Properties](https://data.cityofnewyork.us/City-Government/NYC-Citywide-Annualized-Calendar-Sales-Update/w2pb-icbu/about_data): Updated annually by the Department of Finance. The most recent data available is only from 2022 at the moment.
             ''')
 
 st.header('Benefits',divider=True)
