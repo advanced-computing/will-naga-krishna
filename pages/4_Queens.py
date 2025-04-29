@@ -10,10 +10,9 @@ st.title("Queens")
 
 # Takeaways
 st.markdown('''
-            - The number of permitted applications for familiy units is much higher than in other boroughs.
-            - The prices of sold properties are relatively lower than in Manhattan and Brooklyn.
             - Applications for new construction have been fairly high in the borough although they have not been as prominantly multi-family.
             - Areas like Long Island City have seen significant multi-family new development.
+            - The prices of sold properties are relatively lower than in Manhattan and Brooklyn.
             - The geography and denisty of Queens is quite diverse compared to the other boroughs which may influence the construction.
             ''')
 
