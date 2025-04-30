@@ -31,11 +31,20 @@ st.markdown('''
 
 st.header('Benefits',divider=True)
 st.markdown('''
+            
             **For Private Sector**
-            - ...
-            - ...
+            
+            - Identify Opportunity Zones: Pinpoint high-potential areas for property investment using new construction trends and historical price data.
+            - Improve Feasibility: Enhance development feasibility assessments by comparing permit activity, building types, and sales values in target areas.
+            - Gauge Market Dynamics: Understand the pipeline of new supply (type, size, location) and analyze price trends to gain competitive insights.
+            - Support Strategic Planning: Provide crucial market intelligence for developers, investors, brokers, and financial institutions.
+            
+            **For Public Sector**
+            - Inform Policy & Planning: Guide urban planning, housing policy, and zoning decisions with real-time visibility into construction activity and market responses.
+            - Guide Infrastructure: Direct infrastructure planning (transit, utilities, schools) and resource allocation based on current and projected development patterns.
+            - Target Housing Programs: Identify gaps in housing development across boroughs to more effectively target affordable housing initiatives and resources.
+            - Analyze Trends: Understand relationships between construction volume, property prices, and neighborhood economic trends for data-driven policy insights.
+            - Enhance Transparency: Improve accountability and provide data for community engagement regarding zoning, permitting, and local housing trends.
 
             **For Public Sector**
-            - ...
-            - ...
             ''')
