@@ -9,12 +9,13 @@ st.markdown("<h5 style='text-align: right;'>by Will & Naga & Krishna</h5>",
 
 st.header('Description',divider=True)
 st.markdown('''
-            This project takes maps of construction applications and prices of sold properties 
-            in NYC and combines them to understand the relationship between the amount of 
-            housing construction and the property prices.
-
-            This project was developed in response to the rising cost of living throughout New York City and, in particular, the rising rents.
-            This tool is meant to help understand how the city is responding to the lack of housing supply.
+            - Developed in response to the rising cost of living throughout 
+            New York City and, in particular, the rising rents, this project takes maps 
+            of construction applications and prices of sold properties in NYC and 
+            combines them to understand the relationship between the amount of housing 
+            construction and the property prices. 
+            - The resulting dashboard helps illustrate how the city is responding to the 
+            housing shortage.
             ''')
 
 st.header('Proposal',divider=True)
@@ -31,9 +32,7 @@ st.markdown('''
 
 st.header('Benefits',divider=True)
 st.markdown('''
-            
             **For Private Sector**
-            
             - Identify Opportunity Zones: Pinpoint high-potential areas for property investment using new construction trends and historical price data.
             - Improve Feasibility: Enhance development feasibility assessments by comparing permit activity, building types, and sales values in target areas.
             - Gauge Market Dynamics: Understand the pipeline of new supply (type, size, location) and analyze price trends to gain competitive insights.
@@ -45,6 +44,4 @@ st.markdown('''
             - Target Housing Programs: Identify gaps in housing development across boroughs to more effectively target affordable housing initiatives and resources.
             - Analyze Trends: Understand relationships between construction volume, property prices, and neighborhood economic trends for data-driven policy insights.
             - Enhance Transparency: Improve accountability and provide data for community engagement regarding zoning, permitting, and local housing trends.
-
-            **For Public Sector**
             ''')
